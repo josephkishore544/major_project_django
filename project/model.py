@@ -84,6 +84,7 @@ class Model() :
                 sentence_embedding = self.sbert.encode(text)
                 label_proba = self.direction_classifier(sentence_embedding)
                 attribute,effect = self.direction_classifier.get_label(label_proba)
+                print("Direction manipulation",attribute,effect)
                 new_latent_code = self.lantent_manipulator.manipulate_latent(latent_code, attribute, effect)
                 modified_image = self.stylegan.generate(new_latent_code)
             self.save_image(modified_image,'man')
