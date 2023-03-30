@@ -46,7 +46,7 @@ class Model() :
         elif(type_ == 'man') :
             file_save_path = 'test/manipulated.jpg'
         save_output_image = PIL.Image.fromarray(np.array(tensor2im(image)))
-        save_output_image.save(str(base) + str(file_save_path))
+        save_output_image.save(str(base) + "/" + str(file_save_path))
     
     def generate(self,text) :
         # Generates a image from text and saves as test/generated.jpg
