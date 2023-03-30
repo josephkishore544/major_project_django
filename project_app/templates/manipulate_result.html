@@ -1,0 +1,52 @@
+<html>
+    <head>
+        <title>
+            Text guided generation and manipulation of human face images using StyleGAN
+        </title>
+        <style>
+            body {
+                background-color: #EAA4FF;
+            }
+
+            h2 {
+                text-align: center;
+                color: #005B53;
+            }
+            .image_container {
+                height: 80vh;
+                object-fit: contain;
+                display: flex; 
+                align-items: center;
+                justify-content: space-evenly;
+            }
+            img {
+                max-width: 100%;
+                max-height: 100%;
+                display: block;
+            }
+            .button {
+                float: right;
+                margin-right: 30px;
+                margin-top: 20px;
+                height: 30px;
+                width: 150px;
+                background-color: #005B53;
+                color: #FFE8FF;
+                border-radius: 10px;
+            }
+        </style>
+        <script>
+            function redirect_home() {
+                window.location.replace("{% url 'homepage' %}")
+            }
+        </script>
+    </head>
+    <body>
+        <h2>Result</h2>
+        <div class="image_container">
+            <img src="/media/input.jpg">
+            <img src="/media/manipulated.jpg">
+        </div>
+        <button class="button" onclick="redirect_home()">Return Home</button>
+    </body>
+</html>

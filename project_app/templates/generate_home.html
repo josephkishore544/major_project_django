@@ -1,0 +1,58 @@
+<html>
+    <head>
+        <title>
+            Text guided generation and manipulation of human face images using StyleGAN
+        </title>
+        <style>
+            body {
+                background-color: #EAA4FF;
+            }
+            div {
+                height: 300px;
+                padding-top: 80px;
+            }
+            form {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+            }
+            form label {
+                font-size: large;
+                font-weight: bold;
+                color: #005B53;
+            }
+            input[type=text], select {
+                width: 500px;
+                padding: 12px 20px;
+                display: inline-block;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                box-sizing: border-box;
+            }
+
+            button {
+                width: 200px;
+                background-color: #005B53;
+                color: #FFE8FF;
+                padding: 14px 20px;
+                margin: 8px 0;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+            }
+
+        </style>
+    </head>
+    <body>
+        <div>
+            <form name="gen_form" method="post" enctype="multipart/form-data" action="{% url 'generate_result' %}">
+                {% csrf_token %}
+                <label for="text_input">Text Input</label><br>
+                <input type="text" name="text_input" placeholder="Enter textual description" required>
+                <br>
+                <button type="submit" class="button">Generate</button>
+            </form>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,54 @@
+<html>
+    <head>
+        <title>
+            Text guided generation and manipulation of human face images using StyleGAN
+        </title>
+        <style>
+            body {
+                background-color: #EAA4FF;
+            }
+
+            .title {
+                text-align: center;
+                color: #005B53;
+                margin-top: 30px;
+                margin-bottom: 30px;
+            }
+
+            .button_container {
+                width : 60vw;
+                margin: auto;
+                display: flex;
+                align-items: center;
+                height: 300px;
+                justify-content: space-around;
+            }
+
+            .button {
+                height: 60px;
+                width: 200px;
+                background-color: #005B53;
+                color: #FFE8FF;
+                font-size: large;
+                border-radius: 10px;
+            }
+        </style>
+        <script>
+            function redirect(button_id) {
+                if (button_id == 'gen')
+                    window.location.replace("{% url 'generate_home' %}");
+                else if (button_id == 'man')
+                    window.location.replace("{% url 'manipulate_home' %}");
+            }
+        </script>
+    </head>
+    <body>
+        <div class = 'title_container'>
+            <h1 class="title">Text guided generation and manipulation of human face images using StyleGAN</h1>
+        </div>
+        <div class = 'button_container'>
+            <button id = "gen" class = 'button' onclick="redirect(this.id)">Generate Image</button>
+            <button id = "man" class = 'button' onclick="redirect(this.id)">Manipulate Image</button>
+        </div>
+    </body>
+</html>
