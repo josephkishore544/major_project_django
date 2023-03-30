@@ -12,17 +12,20 @@ def homepage(request) :
 def generate_home(request) :
     mode = 'gen'
     my_handler.set_mode(mode)
+    print("Mode set to gen")
     return render(request, 'generate_home.html')
 
 def generate_result(request) :
     input_text = request.POST.get('text_input')
     my_handler.set_text(input_text)
     my_handler.execute()
+    print("Image generated")
     return render(request, 'generate_result.html')
 
 def manipulate_home(request) :
     mode = 'man'
     my_handler.set_mode(mode)
+    print("Mode set to man")
     return render(request, 'manipulate_home.html')
 
 def manipulate_last(request) :
@@ -46,11 +49,12 @@ def manipulate_result(request) :
     if request.method == "POST" :
       uploaded_image = request.FILES['uploaded_image']
       project_dir_path = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
-      file_path = "project\\test\\input.jpg"
-      upload_file_name = os.path.join(dir_path, file_path)
+      file_path = "project/test/input.jpg"
+      upload_file_name = os.path.join(project_dir_path, file_path)
       if os.path.exists(upload_file_name) :
          os.remove(upload_file_name)
       fs = FileSystemStorage()
       name = fs.save('input.jpg', uploaded_image)
     my_handler.execute()
+    print("Image manipulated")
     return render(request, 'manipulate_result.html')

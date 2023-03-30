@@ -69,11 +69,12 @@ class Model() :
         # manipulates and saves as manipulated.jpg
         try :
             with torch.no_grad() :
+                base = os.path.dirname(os.path.realpath(__file__))
                 if image_input_mode == 'upload' :
                     image_path = 'test/input.jpg'
                 elif image_input_mode == 'last' :
                     image_path = 'test/generated.jpg'
-                preprocessed_image = image_preprocess(image_path)
+                preprocessed_image = image_preprocess(os.path.join(base,image_path))
                 latent_code = self.inverter.invert(preprocessed_image)
                 sentence_embedding = self.sbert.encode(text)
                 label_proba = self.direction_classifier(sentence_embedding)
