@@ -18,8 +18,11 @@ def generate_home(request) :
 def generate_result(request) :
     input_text = request.POST.get('text_input')
     my_handler.set_text(input_text)
-    my_handler.execute()
-    print("Image generated")
+    success = my_handler.execute()
+    if success :
+        print("Image generated")
+    else :
+        print("Something went wrong")
     return render(request, 'generate_result.html')
 
 def manipulate_home(request) :
@@ -55,6 +58,9 @@ def manipulate_result(request) :
          os.remove(upload_file_name)
       fs = FileSystemStorage()
       name = fs.save('input.jpg', uploaded_image)
-    my_handler.execute()
-    print("Image manipulated")
+    success = my_handler.execute()
+    if success :
+        print("Image generated")
+    else :
+        print("Something went wrong")
     return render(request, 'manipulate_result.html')
