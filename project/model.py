@@ -13,6 +13,7 @@ import PIL.Image
 import numpy as np
 import sys
 import traceback
+import os 
 
 # Wrapper Class to load all models
 # Has two methods
@@ -39,12 +40,13 @@ class Model() :
         self.lantent_manipulator = LatentManipulator()
     
     def save_image(self,image,type_) :
+        base = os.path.dirname(os.path.realpath(__file__))
         if(type_ == 'gen') :
             file_save_path = 'test/generated.jpg'
         elif(type_ == 'man') :
             file_save_path = 'test/manipulated.jpg'
         save_output_image = PIL.Image.fromarray(np.array(tensor2im(image)))
-        save_output_image.save(file_save_path)
+        save_output_image.save(str(base) + str(file_save_path))
     
     def generate(self,text) :
         # Generates a image from text and saves as test/generated.jpg
