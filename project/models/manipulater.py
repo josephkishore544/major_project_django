@@ -1,5 +1,6 @@
 import torch
 import numpy as np
+import os
 
 latent_direction_file_name = {
     'age' : 'age.npy',
@@ -11,7 +12,7 @@ latent_direction_file_name = {
     'nose' : 'nose_ratio.npy',
 }
 
-latent_direction_folder_path = 'models/trained_models/latentdirections/'
+latent_direction_folder_path = os.path.join(os.path.dirname(__file__),"trained_models/latentdirections/")
 
 # Class to perform Latent Manipulation
 # Add a text classifier
