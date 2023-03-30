@@ -1,3 +1,5 @@
+import os
+
 MODEL_PATHS = {
     'text_encoder' : 'models/trained_models/text_encoder.pt',
     'latent_code_decoder' : 'models/trained_models/latent_code_decoder.pt',
@@ -9,8 +11,9 @@ MODEL_PATHS = {
 }
 
 def get_path(key) :
+    base = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
     try :
-        path = MODEL_PATHS[key]
+        path = str(base) + "/" + MODEL_PATHS[key]
     except Exception as e :
         print(e)
     return path
