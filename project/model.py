@@ -47,6 +47,8 @@ class Model() :
             file_save_path = 'test/manipulated.jpg'
         save_output_image = PIL.Image.fromarray(np.array(tensor2im(image)))
         save_path = os.path.join(base, file_save_path)
+        if os.path.exists(save_path) :
+            os.remove(save_path)
         save_output_image.save(save_path)
         print("Image saved at",save_path)
         return
